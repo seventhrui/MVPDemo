@@ -6,7 +6,6 @@ import com.tribe7.mvptest.main.view.MainView;
 /**
  * Created by admin on 2016/8/9.
  */
-
 public class MainPresenter implements MainPresenterImpl {
     private MainView mainView;
 

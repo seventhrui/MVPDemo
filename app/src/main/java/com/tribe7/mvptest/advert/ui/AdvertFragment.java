@@ -17,22 +17,20 @@ import com.tribe7.mvptest.bean.AdBean;
 import java.util.List;
 
 /**
- *
  * Created by admin on 2016/8/9.
  */
-
 public class AdvertFragment extends BaseFragment implements AdvertView {
     private ConvenientBanner convenientBanner;//顶部广告栏控件
     private List<AdBean> adlist;
 
     private AdvertPresenterImpl advertpresenterimpl;
 
-    private static AdvertFragment fragmen;
+    private static AdvertFragment fragment;
 
-    public static AdvertFragment getFragmen() {
-        if (fragmen == null)
-            fragmen = new AdvertFragment();
-        return fragmen;
+    public static AdvertFragment getFragment() {
+        if (fragment == null)
+            fragment = new AdvertFragment();
+        return fragment;
     }
 
 
@@ -46,11 +44,12 @@ public class AdvertFragment extends BaseFragment implements AdvertView {
     @Override
     protected void initData(Bundle savedInstanceState) {
         advertpresenterimpl = new AdvertPresenter(this);
-        advertpresenterimpl.loadNews(2);
+        advertpresenterimpl.loadNews("2");
     }
 
     @Override
     protected void setListener() {
+
 
     }
 
@@ -80,6 +79,6 @@ public class AdvertFragment extends BaseFragment implements AdvertView {
             public NetworkImageHolderView createHolder() {
                 return new NetworkImageHolderView();
             }
-        },list).setPageIndicator(new int[]{R.drawable.ic_page_indicator, R.drawable.ic_page_indicator_focused});
+        }, list).setPageIndicator(new int[]{R.drawable.ic_page_indicator, R.drawable.ic_page_indicator_focused});
     }
 }

@@ -5,5 +5,5 @@ package com.tribe7.mvptest.advert.model;
  */
 
 public interface AdvertModelImpl {
-    void loadAdvert(String url, AdvertMode.OnLoadNewsListListener listener);
+    void loadAdvert(String url, String type, AdvertMode.OnLoadNewsListListener listener);
 }

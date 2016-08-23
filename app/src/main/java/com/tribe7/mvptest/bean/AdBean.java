@@ -1,12 +1,14 @@
 package com.tribe7.mvptest.bean;
 
+import com.tribe7.mvptest.base.BaseBean;
+
 /**
  * @author app
  * @version V1.0
  * @time 2016-05-11 15:32.
  * @description 广告
  */
-public class AdBean {
+public class AdBean extends BaseBean {
     /** id     */
     private int id;
     /** 标题     */

@@ -1,6 +1,6 @@
-package com.tribe7.mvptest.advert.model;
+package com.tribe7.mvptest.article.model;
 
-import com.tribe7.mvptest.bean.AdBean;
+import com.tribe7.mvptest.bean.ArticleBean;
 import com.tribe7.mvptest.utils.JsonUtils;
 import com.tribe7.mvptest.utils.OkHttpUtils;
 
@@ -8,17 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by admin on 2016/8/11.
+ * Created by admin on 2016/8/22.
  */
 
-public class AdvertMode implements AdvertModelImpl {
-
+public class ArticleModel implements ArticleModelImpl {
     @Override
-    public void loadAdvert(String url, String type, final AdvertMode.OnLoadNewsListListener listener) {
+    public void loadArticle(String url, int type, int page, int pagesize, final OnLoadArticleListListener listener) {
         OkHttpUtils.ResultCallback<String> loadNewsCallback = new OkHttpUtils.ResultCallback<String>() {
             @Override
             public void onSuccess(String response) {
-                List<AdBean> newsBeanList = JsonUtils.readJsonNewsBeans(response);
+                List<ArticleBean> newsBeanList = JsonUtils.readJsonArticleBeans(response);
                 listener.onSuccess(newsBeanList);
             }
 
@@ -27,14 +26,16 @@ public class AdvertMode implements AdvertModelImpl {
                 listener.onFailure("load news list failure.", e);
             }
         };
-        //OkHttpUtils.get(url, loadNewsCallback);
+        OkHttpUtils.get(url, loadNewsCallback);
         List<OkHttpUtils.Param> param = new ArrayList<OkHttpUtils.Param>();
-        param.add(new OkHttpUtils.Param("position", type));
+        param.add(new OkHttpUtils.Param("type", type+""));
+        param.add(new OkHttpUtils.Param("page", page+""));
+        param.add(new OkHttpUtils.Param("pagesize", pagesize+""));
         OkHttpUtils.post(url, loadNewsCallback, param);
     }
 
-    public interface OnLoadNewsListListener {
-        void onSuccess(List<AdBean> list);
+    public interface OnLoadArticleListListener {
+        void onSuccess(List<ArticleBean> list);
         void onFailure(String msg, Exception e);
     }
 }

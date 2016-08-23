@@ -5,5 +5,5 @@ package com.tribe7.mvptest.advert.presenter;
  */
 
 public interface AdvertPresenterImpl {
-    void loadNews(int type);
+    void loadNews(String type);
 }
