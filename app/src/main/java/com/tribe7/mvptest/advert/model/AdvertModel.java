@@ -11,10 +11,10 @@ import java.util.List;
  * Created by admin on 2016/8/11.
  */
 
-public class AdvertMode implements AdvertModelImpl {
+public class AdvertModel implements AdvertModelImpl {
 
     @Override
-    public void loadAdvert(String url, String type, final AdvertMode.OnLoadNewsListListener listener) {
+    public void loadAdvert(String url, String type, final AdvertModel.OnLoadNewsListListener listener) {
         OkHttpUtils.ResultCallback<String> loadNewsCallback = new OkHttpUtils.ResultCallback<String>() {
             @Override
             public void onSuccess(String response) {

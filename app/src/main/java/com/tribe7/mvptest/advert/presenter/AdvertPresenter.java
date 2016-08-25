@@ -1,6 +1,6 @@
 package com.tribe7.mvptest.advert.presenter;
 
-import com.tribe7.mvptest.advert.model.AdvertMode;
+import com.tribe7.mvptest.advert.model.AdvertModel;
 import com.tribe7.mvptest.advert.model.AdvertModelImpl;
 import com.tribe7.mvptest.advert.view.AdvertView;
 import com.tribe7.mvptest.bean.AdBean;
@@ -11,13 +11,13 @@ import java.util.List;
  * Created by admin on 2016/8/11.
  */
 
-public class AdvertPresenter implements AdvertPresenterImpl, AdvertMode.OnLoadNewsListListener {
+public class AdvertPresenter implements AdvertPresenterImpl, AdvertModel.OnLoadNewsListListener {
     private AdvertView advertview;
     private AdvertModelImpl advertmodelimpl;
 
     public AdvertPresenter(AdvertView advertview){
         this.advertview = advertview;
-        this.advertmodelimpl = new AdvertMode();
+        this.advertmodelimpl = new AdvertModel();
     }
 
     @Override

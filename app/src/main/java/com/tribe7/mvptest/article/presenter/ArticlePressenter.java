@@ -22,9 +22,7 @@ public class ArticlePressenter implements ArticlePresenterImpl, ArticleModel.OnL
     @Override
     public void loadArticle(int cateid, int page, int pagsize) {
         String url = "http://192.168.0.70/7official/api.php/post/getPostList";
-        if(page == 0) {
-            articleview.showProgress();
-        }
+        articleview.showProgress();
         articlemodelimpl.loadArticle(url, cateid, page, pagsize, this);
     }
 
@@ -32,9 +30,8 @@ public class ArticlePressenter implements ArticlePresenterImpl, ArticleModel.OnL
     public void onSuccess(List<ArticleBean> list) {
         if(list.size()>0) {
             articleview.addArticle(list);
-            articleview.showNoMoreData();
         }else{
-            articleview.addArticle(list);
+            articleview.showNoMoreData();
         }
         articleview.hideProgress();
     }

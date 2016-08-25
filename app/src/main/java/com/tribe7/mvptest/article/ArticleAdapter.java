@@ -39,7 +39,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ItemView
     public void onBindViewHolder(final ItemViewHolder itemViewHolder, final int i) {
         ArticleBean article = mDatas.get(i);
         itemViewHolder.tv_title.setText(article.getTitle());
-        itemViewHolder.tv_content.setText(Html.fromHtml(article.getContent()));
+        itemViewHolder.tv_content.setText(Html.fromHtml(article.getContent().trim()));
         itemViewHolder.tv_hits.setText(context.getString(R.string.hits, new Object[]{article.getHits()}));
         itemViewHolder.tv_comments.setText(context.getString(R.string.comments, new Object[]{article.getComments()}));
         itemViewHolder.tv_type.setText(article.getType()+"");
@@ -106,7 +106,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ItemView
     /**
      * 处理item的点击事件和长按事件
      */
-    interface OnItemClickListener {
+    public interface OnItemClickListener {
         public void onItemClick(View view, int position);
 
         public void onItemLongClick(View view, int position);

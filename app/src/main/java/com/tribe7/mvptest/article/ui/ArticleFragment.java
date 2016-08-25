@@ -1,11 +1,11 @@
 package com.tribe7.mvptest.article.ui;
 
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.tribe7.mvptest.R;
 import com.tribe7.mvptest.article.ArticleAdapter;
@@ -14,8 +14,7 @@ import com.tribe7.mvptest.article.presenter.ArticlePressenter;
 import com.tribe7.mvptest.article.view.ArticleView;
 import com.tribe7.mvptest.base.BaseFragment;
 import com.tribe7.mvptest.bean.ArticleBean;
-import com.tribe7.mvptest.widget.ListItemDecoration;
-import com.tribe7.mvptest.widget.SwipeRefreshLoadLayout;
+import com.tribe7.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +27,12 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
     private ArticlePresenterImpl articlepresenterimpl;
 
     public static ArticleFragment fragment;
-    private SwipeRefreshLoadLayout mSwipeRefreshWidget;
+    private PullLoadMoreRecyclerView mSwipeRefreshWidget;
     private RecyclerView recyclerview;
 
     private int cateid;
-    private int page;
-    private int pagesize;
+    private static int page = 0;
+    private final int pagesize = 10;
     private ArticleAdapter adapter;
 
     public static ArticleFragment getFragment(){
@@ -45,60 +44,107 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
     @Override
     protected View initView(LayoutInflater inflater) {
         rootView = inflater.inflate(R.layout.fragment_article, null);
-        mSwipeRefreshWidget = (SwipeRefreshLoadLayout) rootView.findViewById(R.id.swipe_refresh_widget);
-        recyclerview = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        mSwipeRefreshWidget = (PullLoadMoreRecyclerView) rootView.findViewById(R.id.swipe_refresh_widget);
+        recyclerview = mSwipeRefreshWidget.getRecyclerView();
         return rootView;
     }
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        mSwipeRefreshWidget.setColorSchemeResources(R.color.primary,
-                                                    R.color.primary_dark,
-                                                    R.color.primary_light,
-                                                    R.color.accent);
+        //设置下拉刷新是否可见
+        //mSwipeRefreshWidget.setRefreshing(true);
+        //设置是否可以下拉刷新
+        //mSwipeRefreshWidget.setPullRefreshEnable(true);
+        //设置是否可以上拉刷新
+        //mSwipeRefreshWidget.setPushRefreshEnable(false);
+        //显示下拉刷新
+        mSwipeRefreshWidget.setRefreshing(true);
+        //设置上拉刷新文字
+        mSwipeRefreshWidget.setFooterViewText("loading");
+        //设置上拉刷新文字颜色
+        mSwipeRefreshWidget.setFooterViewTextColor(R.color.white);
+        //设置加载更多背景色
+        mSwipeRefreshWidget.setFooterViewBackgroundColor(R.color.cardview_light_background);
+        mSwipeRefreshWidget.setLinearLayout();
+
+        mSwipeRefreshWidget.setOnPullLoadMoreListener(new PullLoadMoreListener());
+        //setEmptyView
+        mSwipeRefreshWidget.setEmptyView(LayoutInflater.from(getContext()).inflate(R.layout.layout_empty_view, null));
+
+        recyclerview.setVerticalScrollBarEnabled (true);
 
         arlist = new ArrayList<ArticleBean>();
         adapter = new ArticleAdapter(context, arlist);
-        recyclerview.setAdapter(adapter);
-        recyclerview.setLayoutManager(new LinearLayoutManager(context));
-        // 设置item分
-        recyclerview.addItemDecoration(new ListItemDecoration(context, LinearLayoutManager.VERTICAL));
-        // 设置item动画
-        recyclerview.setItemAnimator(new DefaultItemAnimator());
+        mSwipeRefreshWidget.setAdapter(adapter);
 
         articlepresenterimpl = new ArticlePressenter(this);
         articlepresenterimpl.loadArticle(cateid, page, pagesize);
     }
 
-    @Override
-    protected void setListener() {
+    class PullLoadMoreListener implements PullLoadMoreRecyclerView.PullLoadMoreListener {
+        @Override
+        public void onRefresh() {
+            refreshData();
+        }
 
+        @Override
+        public void onLoadMore() {
+            loadMoreData();
+        }
     }
 
+    @Override
+    protected void setListener() {
+        adapter.setOnItemClickListener(new ArticleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(context, "Click" + position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                Toast.makeText(context, "LongClick" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void refreshData() {
+        page = 0;
+        if(arlist.size()>0) {
+            arlist.clear();
+        }
+        articlepresenterimpl.loadArticle(cateid, page, pagesize);
+    }
+    private void loadMoreData() {
+        articlepresenterimpl.loadArticle(cateid, page, pagesize);
+    }
 
     @Override
     public void showProgress() {
-        mSwipeRefreshWidget.setRefreshing(true);
+        mSwipeRefreshWidget.setPullLoadMoreCompleted();
     }
 
     @Override
     public void hideProgress() {
-        mSwipeRefreshWidget.setRefreshing(false);
+        mSwipeRefreshWidget.setPullLoadMoreCompleted();
     }
 
     @Override
     public void addArticle(List<ArticleBean> list) {
+        if(list.size()>0) {
+            page++;
+        }
         arlist.addAll(list);
         adapter.notifyDataSetChanged();
     }
 
     @Override
     public void showNoMoreData() {
-
+        Snackbar.make(rootView, "没有更多数据", Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void showLoadFailMsg(String msg) {
-
+        Snackbar.make(rootView, msg, Snackbar.LENGTH_SHORT).show();
     }
 }

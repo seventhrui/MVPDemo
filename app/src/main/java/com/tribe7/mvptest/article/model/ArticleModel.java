@@ -23,10 +23,9 @@ public class ArticleModel implements ArticleModelImpl {
 
             @Override
             public void onFailure(Exception e) {
-                listener.onFailure("load news list failure.", e);
+                listener.onFailure("加载失败", e);
             }
         };
-        OkHttpUtils.get(url, loadNewsCallback);
         List<OkHttpUtils.Param> param = new ArrayList<OkHttpUtils.Param>();
         param.add(new OkHttpUtils.Param("type", type+""));
         param.add(new OkHttpUtils.Param("page", page+""));

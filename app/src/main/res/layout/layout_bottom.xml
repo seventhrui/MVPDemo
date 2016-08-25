@@ -5,13 +5,6 @@
     android:layout_alignParentBottom="true"
     android:orientation="vertical" >
 
-    <!-- 普通底部导航 -->
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/black2" />
-
     <LinearLayout
         android:id="@+id/main_bottom"
         android:layout_width="match_parent"
