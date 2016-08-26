@@ -1,7 +1,10 @@
 package com.tribe7.mvptest.article.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,7 +101,15 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
         adapter.setOnItemClickListener(new ArticleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(context, "Click" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.setClass(context, ArticleContentActivity.class);
+                //startActivity(intent);
+                View transitionView = view.findViewById(R.id.card_view);
+                ActivityOptionsCompat options =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+                                transitionView, getString(R.string.transition_news_img));
+
+                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
             }
 
             @Override

@@ -18,7 +18,7 @@ public class AdvertModel implements AdvertModelImpl {
         OkHttpUtils.ResultCallback<String> loadNewsCallback = new OkHttpUtils.ResultCallback<String>() {
             @Override
             public void onSuccess(String response) {
-                List<AdBean> newsBeanList = JsonUtils.readJsonNewsBeans(response);
+                List<AdBean> newsBeanList = JsonUtils.readJsonAdvertBeans(response);
                 listener.onSuccess(newsBeanList);
             }
 

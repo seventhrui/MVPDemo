@@ -16,11 +16,11 @@ import java.util.List;
 
 public class JsonUtils {
     /**
-     * 将获取到的json转换为新闻列表对象
+     * 将获取到的json转换为广告列表对象
      * @param res
      * @return
      */
-    public static List<AdBean> readJsonNewsBeans(String res) {
+    public static List<AdBean> readJsonAdvertBeans(String res) {
         List<AdBean> beans = new ArrayList<AdBean>();
         try {
             JSONObject json = new JSONObject(res);

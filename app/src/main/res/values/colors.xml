@@ -11,7 +11,9 @@
 
     <color name="white">#FFFFFF</color>
     <color name="super_light_grey">#FAFAFA</color>
+    <color name="sr_window_background">#FFFEFEFE</color>
 
+    <color name="black_90">#dd000000</color>
     <color name="black">#ff000000</color>
     <color name="black2">#ff333333</color>
     <color name="black3">#ff666666</color>
