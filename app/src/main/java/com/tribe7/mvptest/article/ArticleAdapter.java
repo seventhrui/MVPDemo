@@ -14,7 +14,7 @@ import com.tribe7.mvptest.bean.ArticleBean;
 import java.util.List;
 
 /**
- * Created by admin on 2016/8/23.
+ * Article 列表 adapter
  */
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ItemViewHolder> {
     private RecyclerView mRecyclerView;
