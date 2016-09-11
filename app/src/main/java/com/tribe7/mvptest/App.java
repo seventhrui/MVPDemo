@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class App extends Application {
     public static Context _context;
+    public static final Boolean IS_DEBUG = false;
 
     @Override
     public void onCreate() {
