@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * Created by admin on 2016/8/11.
  */
-
 public class AdvertPresenter implements AdvertPresenterImpl, AdvertModel.OnLoadNewsListListener {
     private AdvertView advertview;
     private AdvertModelImpl advertmodelimpl;
