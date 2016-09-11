@@ -1,5 +1,6 @@
 package com.tribe7.mvptest.advert.presenter;
 
+import com.tribe7.mvptest.Api;
 import com.tribe7.mvptest.advert.model.AdvertModel;
 import com.tribe7.mvptest.advert.model.AdvertModelImpl;
 import com.tribe7.mvptest.advert.view.AdvertView;
@@ -22,7 +23,8 @@ public class AdvertPresenter implements AdvertPresenterImpl, AdvertModel.OnLoadN
 
     @Override
     public void loadNews(String type) {
-        String url = "http://192.168.0.70/7official/api.php/Advert/getAddList";
+        String url = Api.GET_ADVERT_LIST;
+        //String url = "http://192.168.0.70/7official/api.php/Advert/getAddList";
         advertmodelimpl.loadAdvert(url, type, this);
     }
 
