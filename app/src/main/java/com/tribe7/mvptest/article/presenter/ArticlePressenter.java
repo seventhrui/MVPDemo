@@ -1,5 +1,6 @@
 package com.tribe7.mvptest.article.presenter;
 
+import com.tribe7.mvptest.Api;
 import com.tribe7.mvptest.article.model.ArticleModel;
 import com.tribe7.mvptest.article.model.ArticleModelImpl;
 import com.tribe7.mvptest.article.view.ArticleView;
@@ -21,7 +22,8 @@ public class ArticlePressenter implements ArticlePresenterImpl, ArticleModel.OnL
 
     @Override
     public void loadArticle(int cateid, int page, int pagsize) {
-        String url = "http://192.168.0.70/7official/api.php/post/getPostList";
+        String url = Api.POST_ARTICLE_LIST;
+        //String url = "http://192.168.0.70/7official/api.php/post/getPostList";
         articleview.showProgress();
         articlemodelimpl.loadArticle(url, cateid, page, pagsize, this);
     }
