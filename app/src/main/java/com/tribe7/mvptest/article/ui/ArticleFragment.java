@@ -106,8 +106,7 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
                 //startActivity(intent);
                 View transitionView = view.findViewById(R.id.card_view);
                 ActivityOptionsCompat options =
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
-                                transitionView, getString(R.string.transition_news_img));
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), transitionView, getString(R.string.transition_news_img));
 
                 ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
             }
