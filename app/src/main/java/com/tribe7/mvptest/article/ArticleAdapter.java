@@ -1,6 +1,7 @@
 package com.tribe7.mvptest.article;
 
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;

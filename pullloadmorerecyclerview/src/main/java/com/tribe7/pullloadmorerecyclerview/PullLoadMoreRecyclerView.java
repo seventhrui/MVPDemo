@@ -19,14 +19,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/**
- * Created by WuXiaolong on 2015/7/2.
- * github:https://github.com/WuXiaolong/PullLoadMoreRecyclerView
- * weibo:http://weibo.com/u/2175011601
- * 微信公众号：AndroidProgrammer
- * 博客：http://wuxiaolong.me/
- */
-@SuppressWarnings("unused")
 public class PullLoadMoreRecyclerView extends LinearLayout {
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -77,11 +69,8 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
 
         mFooterView.setVisibility(View.GONE);
         mEmptyViewContainer.setVisibility(View.GONE);
-
         this.addView(view);
-
     }
-
 
     /**
      * LinearLayoutManager
@@ -95,9 +84,7 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
     /**
      * GridLayoutManager
      */
-
     public void setGridLayout(int spanCount) {
-
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, spanCount);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(gridLayoutManager);
@@ -107,7 +94,6 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
     /**
      * StaggeredGridLayoutManager
      */
-
     public void setStaggeredGridLayout(int spanCount) {
         StaggeredGridLayoutManager staggeredGridLayoutManager =
                 new StaggeredGridLayoutManager(spanCount, LinearLayoutManager.VERTICAL);
@@ -143,7 +129,6 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
         mEmptyViewContainer.addView(emptyView);
     }
 
-
     public void showEmptyView() {
 
         RecyclerView.Adapter<?> adapter = mRecyclerView.getAdapter();
@@ -155,7 +140,6 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
                 mEmptyViewContainer.setVisibility(GONE);
             }
         }
-
     }
 
     public void setAdapter(RecyclerView.Adapter adapter) {
@@ -216,7 +200,6 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
         }
     }
 
-
     public void setPullRefreshEnable(boolean enable) {
         pullRefreshEnable = enable;
         setSwipeRefreshEnable(enable);
@@ -237,7 +220,6 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
 
     public void setColorSchemeResources(int... colorResIds) {
         mSwipeRefreshLayout.setColorSchemeResources(colorResIds);
-
     }
 
     public SwipeRefreshLayout getSwipeRefreshLayout() {
@@ -253,9 +235,7 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
                     mSwipeRefreshLayout.setRefreshing(isRefreshing);
             }
         });
-
     }
-
 
     /**
      * Solve IndexOutOfBoundsException exception
@@ -333,7 +313,6 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
                 .setDuration(300)
                 .setInterpolator(new AccelerateDecelerateInterpolator())
                 .start();
-
     }
 
 
@@ -368,7 +347,6 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
 
     public interface PullLoadMoreListener {
         void onRefresh();
-
         void onLoadMore();
     }
 }

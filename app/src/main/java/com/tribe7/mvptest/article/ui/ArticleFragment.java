@@ -2,6 +2,7 @@ package com.tribe7.mvptest.article.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -32,6 +33,7 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
     public static ArticleFragment fragment;
     private PullLoadMoreRecyclerView mSwipeRefreshWidget;
     private RecyclerView recyclerview;
+    private FloatingActionButton fab;
 
     private int cateid;
     private static int page = 0;
@@ -49,6 +51,7 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
         rootView = inflater.inflate(R.layout.fragment_article, null);
         mSwipeRefreshWidget = (PullLoadMoreRecyclerView) rootView.findViewById(R.id.swipe_refresh_widget);
         recyclerview = mSwipeRefreshWidget.getRecyclerView();
+        fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
         return rootView;
     }
 
@@ -105,15 +108,20 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
                 intent.setClass(context, ArticleContentActivity.class);
                 //startActivity(intent);
                 View transitionView = view.findViewById(R.id.card_view);
-                ActivityOptionsCompat options =
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), transitionView, getString(R.string.transition_news_img));
-
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), transitionView, getString(R.string.transition_news_img));
                 ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
             }
 
             @Override
             public void onItemLongClick(View view, int position) {
                 Toast.makeText(context, "LongClick" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSwipeRefreshWidget.scrollToTop();
             }
         });
     }
