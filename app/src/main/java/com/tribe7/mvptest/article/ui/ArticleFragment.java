@@ -121,7 +121,8 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mSwipeRefreshWidget.scrollToTop();
+                recyclerview.smoothScrollToPosition(0);
+                //mSwipeRefreshWidget.scrollToTop();
             }
         });
     }
