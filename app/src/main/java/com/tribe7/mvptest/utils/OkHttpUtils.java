@@ -3,7 +3,6 @@ package com.tribe7.mvptest.utils;
 /**
  * Created by admin on 2016/8/11.
  */
-
 import android.os.Handler;
 import android.os.Looper;
 
@@ -23,10 +22,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Description : OkHttp网络连接封装工具类
- * Author : lauren
- * Email  : lauren.liuling@gmail.com
- * Blog   : http://www.liuling123.com
- * Date   : 15/12/17
  */
 public class OkHttpUtils {
 

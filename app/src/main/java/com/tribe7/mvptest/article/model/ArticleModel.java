@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * Created by admin on 2016/8/22.
  */
-
 public class ArticleModel implements ArticleModelImpl {
     @Override
     public void loadArticle(String url, int type, int page, int pagesize, final OnLoadArticleListListener listener) {

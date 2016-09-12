@@ -5,7 +5,6 @@ import com.tribe7.mvptest.base.BaseBean;
 /**
  * Created by admin on 2016/8/22.
  */
-
 public class ArticleBean extends BaseBean {
     private int id;
     private String title;
