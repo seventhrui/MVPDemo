@@ -16,6 +16,6 @@
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
         android:src="@drawable/icon_up"
-        app:layout_behavior="com.tribe7.mvptest.widget.MyBehavior" />
+        app:layout_behavior="com.tribe7.mvptest.widget.FABBehavior" />
 
 </android.support.design.widget.CoordinatorLayout>

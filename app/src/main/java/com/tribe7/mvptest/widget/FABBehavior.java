@@ -14,11 +14,11 @@ import android.view.ViewGroup;
  * Created by admin on 2016/9/12.
  */
 
-public class MyBehavior extends FloatingActionButton.Behavior {
+public class FABBehavior extends FloatingActionButton.Behavior {
     //我们还可以加一个加速器实现弹射效果
     private FastOutLinearInInterpolator folistener = new FastOutLinearInInterpolator();
 
-    public MyBehavior(Context context, AttributeSet attr) {
+    public FABBehavior(Context context, AttributeSet attr) {
         super();
     }
 
@@ -50,14 +50,14 @@ public class MyBehavior extends FloatingActionButton.Behavior {
     private void animateIn(FloatingActionButton child) {
         child.setVisibility(View.VISIBLE);
         //属性动画
-        ViewCompat.animate(child).translationX(0).setInterpolator(folistener).setListener(null).start();
+        ViewCompat.animate(child).translationY(0).setInterpolator(folistener).setListener(null).start();
     }
 
     //滑出去
     private void animateOut(FloatingActionButton child) {
         //属性动画
         //设置监听判断状态
-        ViewCompat.animate(child).translationX(child.getHeight()).setInterpolator(folistener).setListener(new ViewPropertyAnimatorListenerAdapter() {
+        ViewCompat.animate(child).translationY(child.getHeight()).setInterpolator(folistener).setListener(new ViewPropertyAnimatorListenerAdapter() {
             @Override
             public void onAnimationStart(View view) {
                 isAnimatingOut = true;
