@@ -33,7 +33,7 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
     public static ArticleFragment fragment;
     private PullLoadMoreRecyclerView mSwipeRefreshWidget;
     private RecyclerView recyclerview;
-    private FloatingActionButton fab;
+    //private FloatingActionButton fab;
 
     private int cateid;
     private static int page = 0;
@@ -51,7 +51,7 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
         rootView = inflater.inflate(R.layout.fragment_article, null);
         mSwipeRefreshWidget = (PullLoadMoreRecyclerView) rootView.findViewById(R.id.swipe_refresh_widget);
         recyclerview = mSwipeRefreshWidget.getRecyclerView();
-        fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+        //fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
         return rootView;
     }
 
@@ -117,7 +117,7 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
                 Toast.makeText(context, "LongClick" + position, Toast.LENGTH_SHORT).show();
             }
         });
-
+        /*
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,6 +125,7 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
                 //mSwipeRefreshWidget.scrollToTop();
             }
         });
+        */
     }
 
     private void refreshData() {
