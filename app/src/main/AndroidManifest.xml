@@ -23,6 +23,8 @@
         <activity android:name=".article.ui.ArticleContentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TransparentStatusBar" />
+
+        <service android:name="com.tribe7.mvptest.utils.DownloadService"></service>
     </application>
 
 </manifest>
