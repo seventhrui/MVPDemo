@@ -3,9 +3,11 @@ package com.tribe7.mvptest.advert.ui;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.tribe7.convenientbanner.ConvenientBanner;
 import com.tribe7.convenientbanner.holder.CBViewHolderCreator;
+import com.tribe7.convenientbanner.listener.OnItemClickListener;
 import com.tribe7.mvptest.R;
 import com.tribe7.mvptest.advert.presenter.AdvertPresenter;
 import com.tribe7.mvptest.advert.presenter.AdvertPresenterImpl;
@@ -49,7 +51,6 @@ public class AdvertFragment extends BaseFragment implements AdvertView {
 
     @Override
     protected void setListener() {
-
 
     }
 

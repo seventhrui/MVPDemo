@@ -20,6 +20,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.tribe7.mvptest.webview.WebViewActivity"
+            android:screenOrientation="portrait" />
+
         <activity android:name=".article.ui.ArticleContentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TransparentStatusBar" />

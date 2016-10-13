@@ -1,12 +1,14 @@
 package com.tribe7.mvptest.advert.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.tribe7.convenientbanner.holder.Holder;
 import com.tribe7.mvptest.bean.AdBean;
 import com.tribe7.mvptest.utils.ImageLoaderUtils;
+import com.tribe7.mvptest.webview.WebViewActivity;
 
 
 /**
@@ -26,7 +28,18 @@ public class NetworkImageHolderView implements Holder<AdBean> {
     }
 
     @Override
-    public void UpdateUI(Context context, int position, AdBean data) {
+    public void UpdateUI(final Context context, int position, final AdBean data) {
         ImageLoaderUtils.display(context, imageView, data.getImgsrc());
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //点击事件
+                Intent intent = new Intent();
+                intent.setClass(context, WebViewActivity.class);
+                intent.putExtra("title", data.getTitle());
+                intent.putExtra("url", data.getUrl());
+                context.startActivity(intent);
+            }
+        });
     }
 }
