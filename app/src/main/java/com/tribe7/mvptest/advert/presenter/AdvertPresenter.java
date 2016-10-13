@@ -23,7 +23,6 @@ public class AdvertPresenter implements AdvertPresenterImpl, AdvertModel.OnLoadN
     @Override
     public void loadNews(String type) {
         String url = Api.GET_ADVERT_LIST;
-        //String url = "http://192.168.0.70/7official/api.php/Advert/getAddList";
         advertmodelimpl.loadAdvert(url, type, this);
     }
 

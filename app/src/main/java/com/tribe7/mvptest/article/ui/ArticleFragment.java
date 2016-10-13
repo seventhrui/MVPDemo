@@ -122,7 +122,6 @@ public class ArticleFragment extends BaseFragment implements ArticleView {
             @Override
             public void onClick(View view) {
                 recyclerview.smoothScrollToPosition(0);
-                //mSwipeRefreshWidget.scrollToTop();
             }
         });
 

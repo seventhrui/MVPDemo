@@ -12,7 +12,7 @@ import com.tribe7.mvptest.webview.WebViewActivity;
 
 
 /**
- * 网络图片加载例子
+ * 网络图片加载View
  */
 public class NetworkImageHolderView implements Holder<AdBean> {
     private Context context;
