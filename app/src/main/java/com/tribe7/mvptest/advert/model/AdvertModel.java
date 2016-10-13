@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * Created by admin on 2016/8/11.
  */
-
 public class AdvertModel implements AdvertModelImpl {
 
     @Override
@@ -27,7 +26,6 @@ public class AdvertModel implements AdvertModelImpl {
                 listener.onFailure("load news list failure.", e);
             }
         };
-        //OkHttpUtils.get(url, loadNewsCallback);
         List<OkHttpUtils.Param> param = new ArrayList<OkHttpUtils.Param>();
         param.add(new OkHttpUtils.Param("position", type));
         OkHttpUtils.post(url, loadNewsCallback, param);
