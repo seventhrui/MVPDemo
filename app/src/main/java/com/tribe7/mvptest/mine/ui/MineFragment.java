@@ -10,7 +10,6 @@ import com.tribe7.mvptest.base.BaseFragment;
 /**
  * Created by admin on 2016/8/9.
  */
-
 public class MineFragment extends BaseFragment {
     @Override
     protected View initView(LayoutInflater inflater) {
