@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.tribe7.mvptest.main.ui.MainActivity"
+        <activity android:name=".main.ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,14 +21,14 @@
         </activity>
 
         <activity
-            android:name="com.tribe7.mvptest.webview.WebViewActivity"
+            android:name=".webview.WebViewActivity"
             android:screenOrientation="portrait" />
 
         <activity android:name=".article.ui.ArticleContentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TransparentStatusBar" />
 
-        <service android:name="com.tribe7.mvptest.utils.DownloadService"></service>
+        <service android:name=".utils.DownloadService"></service>
     </application>
 
 </manifest>
