@@ -59,7 +59,6 @@ public class OkHttpUtils {
     }
 
     private void deliveryResult(final ResultCallback callback, Request request) {
-
         mOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, final IOException e) {
@@ -78,7 +77,6 @@ public class OkHttpUtils {
                 } catch (final Exception e) {
                     sendFailCallback(callback, e);
                 }
-
             }
         });
     }
@@ -141,16 +139,12 @@ public class OkHttpUtils {
      * @param <T>
      */
     public static abstract class ResultCallback<T> {
-
         Type mType;
-
         public ResultCallback(){
             mType = getSuperclassTypeParameter(getClass());
         }
-
         static Type getSuperclassTypeParameter(Class<?> subclass) {
             Type superclass = subclass.getGenericSuperclass();
-
             return superclass;
         }
 
@@ -171,7 +165,6 @@ public class OkHttpUtils {
      * post请求参数类
      */
     public static class Param {
-
         String key;
         String value;
 
@@ -182,6 +175,5 @@ public class OkHttpUtils {
             this.key = key;
             this.value = value;
         }
-
     }
 }
